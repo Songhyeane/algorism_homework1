@@ -140,14 +140,23 @@ class Binary_tree:
             depth+=1
             for _ in range(len(queue)):
                 cur_node = queue.popleft()
+                if cur_node =='_':
+                    result[0].append('_')
+                    continue
+
                 result[0].append(cur_node.data)
 
                 if cur_node.left:
                     queue.append(cur_node.left)
+                else:
+                    queue.append('_')
+
                 if cur_node.right:
                     queue.append(cur_node.right)
+                else:
+                    queue.append('_')
 
-        result.append(depth)
+        result.append(depth-1)
 
         return result
 
